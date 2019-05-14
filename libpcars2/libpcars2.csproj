@@ -8,6 +8,7 @@
     <Company>LoadingReadyRun Community</Company>
     <PackageProjectUrl>https://github.com/LRRCommunity/libpcars2</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/LRRCommunity/libpcars2/blob/master/LICENSE</PackageLicenseUrl>
+    <RootNamespace>LibPCars2</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
