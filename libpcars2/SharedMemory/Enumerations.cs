@@ -65,7 +65,7 @@ namespace LibPCars2.SharedMemory
     /// <summary>
     /// States (modes) that the game as a whole can be in.
     /// </summary>
-    public enum GameState
+    public enum GameState : uint
     {
         GAME_EXITED = 0,
         GAME_FRONT_END,
@@ -81,7 +81,7 @@ namespace LibPCars2.SharedMemory
     /// <summary>
     /// States (modes) for a single play session.
     /// </summary>
-    public enum SessionState
+    public enum SessionState : uint
     {
         SESSION_INVALID = 0,
         SESSION_PRACTICE,
@@ -96,7 +96,7 @@ namespace LibPCars2.SharedMemory
     /// <summary>
     /// States (modes) for a particular race.
     /// </summary>
-    public enum RaceState
+    public enum RaceState : uint
     {
         RACESTATE_INVALID = 0,
         RACESTATE_NOT_STARTED,
@@ -111,7 +111,7 @@ namespace LibPCars2.SharedMemory
     /// <summary>
     /// Possible colors for a race signal flag.
     /// </summary>
-    public enum FlagColour
+    public enum FlagColour : uint
     {
         FLAG_COLOUR_NONE = 0,
         FLAG_COLOUR_GREEN,
@@ -131,7 +131,7 @@ namespace LibPCars2.SharedMemory
     /// <summary>
     /// Possible reasons for a flag to be displayed.
     /// </summary>
-    public enum FlagReason
+    public enum FlagReason : uint
     {
         FLAG_REASON_NONE = 0,
         FLAG_REASON_SOLO_CRASH,
@@ -143,7 +143,7 @@ namespace LibPCars2.SharedMemory
     /// <summary>
     /// Stages of a pit stop.
     /// </summary>
-    public enum PitMode
+    public enum PitMode : uint
     {
         PIT_MODE_NONE = 0,
         PIT_MODE_DRIVING_INTO_PITS,
@@ -157,7 +157,7 @@ namespace LibPCars2.SharedMemory
     /// <summary>
     /// Reasons a pit stop could be scheduled.
     /// </summary>
-    public enum PitSchedule
+    public enum PitSchedule : uint
     {
         PIT_SCHEDULE_NONE = 0,
         PIT_SCHEDULE_PLAYER_REQUESTED,
@@ -174,7 +174,7 @@ namespace LibPCars2.SharedMemory
     /// Bitfield representing on/off status of various features.
     /// </summary>
     [Flags]
-    public enum CarFlags
+    public enum CarFlags : uint
     {
         CAR_HEADLIGHT = 1,
         CAR_ENGINE_ACTIVE = 2,
@@ -188,7 +188,7 @@ namespace LibPCars2.SharedMemory
     /// Bitfield representing possible tire states.
     /// </summary>
     [Flags]
-    public enum TyreFlags
+    public enum TyreFlags : uint
     {
         TYRE_ATTACHED = 1,
         TYRE_INFLATED = 2,
@@ -198,7 +198,7 @@ namespace LibPCars2.SharedMemory
     /// <summary>
     /// Possible terrain types a tire can be on.
     /// </summary>
-    public enum TerrainType
+    public enum TerrainType : uint
     {
         TERRAIN_ROAD = 0,
         TERRAIN_LOW_GRIP_ROAD,
@@ -257,7 +257,7 @@ namespace LibPCars2.SharedMemory
     /// <summary>
     /// Represents crash damage state.
     /// </summary>
-    public enum CrashDamage
+    public enum CrashState : uint
     {
         CRASH_DAMAGE_NONE = 0,
         CRASH_DAMAGE_OFFTRACK,
