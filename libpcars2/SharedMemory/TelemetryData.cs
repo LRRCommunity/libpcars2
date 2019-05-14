@@ -8,7 +8,7 @@ namespace LibPCars2.SharedMemory
     public struct TelemetryData
     {
         public uint Version;
-        public uint BuildVersionNumber;
+        public uint BuildVersion;
 
         public GameState GameState;
         public SessionState SessionState;
@@ -55,18 +55,18 @@ namespace LibPCars2.SharedMemory
         public float WorldFastestSector2Time;
         public float WorldFastestSector3Time;
 
-        public FlagColour HighestFlagColour;
+        public FlagColor HighestFlagColor;
         public FlagReason HighestFlagReason;
 
         public PitMode PitMode;
         public PitSchedule PitSchedule;
 
         public CarFlags CarFlags;
-        public float OilTempCelsius;
-        public float OilPressureKPa;
-        public float WaterTempCelsius;
-        public float WaterPressureKPa;
-        public float FuelPressureKPa;
+        public float OilTemp;
+        public float OilPressure;
+        public float WaterTemp;
+        public float WaterPressure;
+        public float FuelPressure;
         public float FuelLevel;
         public float FuelCapacity;
         public float Speed;
@@ -78,7 +78,7 @@ namespace LibPCars2.SharedMemory
         public float Steering;
         public int Gear;
         public int NumGears;
-        public float OdometerKM;
+        public float Odometer;
         public bool AntiLockActive;
         public int LastOpponentCollisionIndex;
         public float LastOpponentCollisionMagnitude;
@@ -93,24 +93,24 @@ namespace LibPCars2.SharedMemory
         public float[] WorldAcceleration;
         public float[] ExtentsCentre;
 
-        public TyreFlags[] TyreFlags;
+        public TireFlags[] TireFlags;
         public TerrainType[] Terrain;
-        public float[] TyreY;
-        public float[] TyreRPS;
-        public float[] TyreSlipSpeed;
-        public float[] TyreTemp;
-        public float[] TyreGrip;
-        public float[] TyreHeightAboveGround;
-        public float[] TyreLateralStiffness;
-        public float[] TyreWear;
+        public float[] TireY;
+        public float[] TireRPS;
+        public float[] TireSlipSpeed;
+        public float[] TireTemp;
+        public float[] TireGrip;
+        public float[] TireHeightAboveGround;
+        public float[] TireLateralStiffness;
+        public float[] TireWear;
         public float[] BrakeDamage;
         public float[] SuspensionDamage;
-        public float[] BrakeTempCelsius;
-        public float[] TyreTreadTemp;
-        public float[] TyreLayerTemp;
-        public float[] TyreCarcassTemp;
-        public float[] TyreRimTemp;
-        public float[] TyreInternalAirTemp;
+        public float[] BrakeTemp;
+        public float[] TireTreadTemp;
+        public float[] TireLayerTemp;
+        public float[] TireCarcassTemp;
+        public float[] TireRimTemp;
+        public float[] TireInternalAirTemp;
 
         public CrashState CrashState;
         public float AeroDamage;
@@ -156,9 +156,9 @@ namespace LibPCars2.SharedMemory
         public char[] TranslatedTrackVariation;
         public float BrakeBias;
         public float TurboBoostPressure;
-        public char[][] TyreCompound;
+        public char[][] TireCompound;
         public PitSchedule[] PitSchedules;
-        public FlagColour[] HighestFlagColours;
+        public FlagColor[] HighestFlagColors;
         public FlagReason[] HighestFlagReasons;
         public uint[] Nationalities;
         public float SnowDensity;

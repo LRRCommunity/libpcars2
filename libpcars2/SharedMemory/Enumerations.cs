@@ -42,13 +42,13 @@ namespace LibPCars2.SharedMemory
     /// <summary>
     /// Lists the tires available on a vehicle.
     /// </summary>
-    public enum Tyres
+    public enum Tires
     {
-        TYRE_FRONT_LEFT = 0,
-        TYRE_FRONT_RIGHT,
-        TYRE_REAR_LEFT,
-        TYRE_REAR_RIGHT,
-        TYRE_MAX,
+        TIRE_FRONT_LEFT = 0,
+        TIRE_FRONT_RIGHT,
+        TIRE_REAR_LEFT,
+        TIRE_REAR_RIGHT,
+        TIRE_MAX,
     }
 
     /// <summary>
@@ -111,21 +111,21 @@ namespace LibPCars2.SharedMemory
     /// <summary>
     /// Possible colors for a race signal flag.
     /// </summary>
-    public enum FlagColour : uint
+    public enum FlagColor : uint
     {
-        FLAG_COLOUR_NONE = 0,
-        FLAG_COLOUR_GREEN,
-        FLAG_COLOUR_BLUE,
-        FLAG_COLOUR_WHITE_SLOW_CAR,
-        FLAG_COLOUR_WHITE_FINAL_LAP,
-        FLAG_COLOUR_RED,
-        FLAG_COLOUR_YELLOW,
-        FLAG_COLOUR_DOUBLE_YELLOW,
-        FLAG_COLOUR_BLACK_AND_WHITE,
-        FLAG_COLOUR_BLACK_ORANGE_CIRCLE,
-        FLAG_COLOUR_BLACK,
-        FLAG_COLOUR_CHEQUERED,
-        FLAG_COLOUR_MAX,
+        FLAG_COLOR_NONE = 0,
+        FLAG_COLOR_GREEN,
+        FLAG_COLOR_BLUE,
+        FLAG_COLOR_WHITE_SLOW_CAR,
+        FLAG_COLOR_WHITE_FINAL_LAP,
+        FLAG_COLOR_RED,
+        FLAG_COLOR_YELLOW,
+        FLAG_COLOR_DOUBLE_YELLOW,
+        FLAG_COLOR_BLACK_AND_WHITE,
+        FLAG_COLOR_BLACK_ORANGE_CIRCLE,
+        FLAG_COLOR_BLACK,
+        FLAG_COLOR_CHECKERED,
+        FLAG_COLOR_MAX,
     }
 
     /// <summary>
@@ -188,11 +188,11 @@ namespace LibPCars2.SharedMemory
     /// Bitfield representing possible tire states.
     /// </summary>
     [Flags]
-    public enum TyreFlags : uint
+    public enum TireFlags : uint
     {
-        TYRE_ATTACHED = 1,
-        TYRE_INFLATED = 2,
-        TYRE_IS_ON_GROUND = 4,
+        TIRE_ATTACHED = 1,
+        TIRE_INFLATED = 2,
+        TIRE_IS_ON_GROUND = 4,
     }
 
     /// <summary>
@@ -212,7 +212,7 @@ namespace LibPCars2.SharedMemory
         TERRAIN_BUMPY_GRAVEL,
         TERRAIN_RUMBLE_STRIPS,
         TERRAIN_DRAINS,
-        TERRAIN_TYREWALLS,
+        TERRAIN_TIREWALLS,
         TERRAIN_CEMENTWALLS,
         TERRAIN_GUARDRAILS,
         TERRAIN_SAND,
