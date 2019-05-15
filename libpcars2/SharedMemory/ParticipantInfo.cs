@@ -2,31 +2,33 @@
 // Copyright (c) LoadingReadyRun Community. All rights reserved.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Runtime.InteropServices;
 
 namespace LibPCars2.SharedMemory
 {
     /// <summary>
     /// Contains data that is stored for each race participant.
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     public struct ParticipantInfo
     {
         /// <summary>
         /// Indicates whether the struct contains valid data.
         /// </summary>
+        [MarshalAs(UnmanagedType.I1)]
         public bool IsActive;
 
         /// <summary>
         /// The name of the participant.
         /// </summary>
-        public char[] Name;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)StringLimits.STRING_LENGTH_MAX)]
+        public byte[] Name;
 
         /// <summary>
         /// Vehicle's current position.
         /// Represented as XYZ vector in world space.
         /// </summary>
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Vector.VEC_MAX)]
         public float[] WorldPosition;
 
         /// <summary>
