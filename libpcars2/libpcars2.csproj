@@ -1,14 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <Version>0.1.0</Version>
-    <Copyright>Copyright (c) 2019 Shawn Morford</Copyright>
+    <Copyright>Copyright (c) 2019 LoadingReadyRun Community</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>Shawn Morford</Authors>
     <Company>LoadingReadyRun Community</Company>
     <PackageProjectUrl>https://github.com/LRRCommunity/libpcars2</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/LRRCommunity/libpcars2/blob/master/LICENSE</PackageLicenseUrl>
     <RootNamespace>LibPCars2</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
