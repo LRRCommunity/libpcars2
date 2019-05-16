@@ -15,7 +15,7 @@ namespace LibPCars2.SharedMemory.Internals
         /// <summary>
         /// Binary array representing a UTF8-encoded string.
         /// </summary>
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)NameLimits.TYRE_COMPOUND_NAME_LENGTH_MAX)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)NameLimits.TIRE_COMPOUND_NAME_LENGTH_MAX)]
         public byte[] Value;
     }
 }

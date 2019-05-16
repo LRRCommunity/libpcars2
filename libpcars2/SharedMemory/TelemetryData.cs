@@ -2,6 +2,8 @@
 // Copyright (c) LoadingReadyRun Community. All rights reserved.
 // </copyright>
 
+using System.Numerics;
+
 namespace LibPCars2.SharedMemory
 {
 #pragma warning disable SA1516
@@ -15,7 +17,7 @@ namespace LibPCars2.SharedMemory
 
         public int ViewedParticipantIndex { get; }
         public int NumParticipants { get; }
-        public ParticipantInfo[] ParticipantInfo { get; }
+        public ParticipantInfo[] Participants { get; }
 
         public float UnfilteredThrottle { get; }
         public float UnfilteredBrake { get; }
@@ -84,32 +86,15 @@ namespace LibPCars2.SharedMemory
         public bool BoostActive { get; }
         public float BoostAmount { get; }
 
-        public float[] Orientation { get; }
-        public float[] LocalVelocity { get; }
-        public float[] WorldVelocity { get; }
-        public float[] AngularVelocity { get; }
-        public float[] LocalAcceleration { get; }
-        public float[] WorldAcceleration { get; }
-        public float[] ExtentsCentre { get; }
+        public Vector3 Orientation { get; }
+        public Vector3 LocalVelocity { get; }
+        public Vector3 WorldVelocity { get; }
+        public Vector3 AngularVelocity { get; }
+        public Vector3 LocalAcceleration { get; }
+        public Vector3 WorldAcceleration { get; }
+        public Vector3 ExtentsCentre { get; }
 
-        public TireFlags[] TireFlags { get; }
-        public TerrainType[] Terrain { get; }
-        public float[] TireY { get; }
-        public float[] TireRPS { get; }
-        public float[] TireSlipSpeed { get; }
-        public float[] TireTemp { get; }
-        public float[] TireGrip { get; }
-        public float[] TireHeightAboveGround { get; }
-        public float[] TireLateralStiffness { get; }
-        public float[] TireWear { get; }
-        public float[] BrakeDamage { get; }
-        public float[] SuspensionDamage { get; }
-        public float[] BrakeTemp { get; }
-        public float[] TireTreadTemp { get; }
-        public float[] TireLayerTemp { get; }
-        public float[] TireCarcassTemp { get; }
-        public float[] TireRimTemp { get; }
-        public float[] TireInternalAirTemp { get; }
+        public Tire[] Tires { get; }
 
         public CrashState CrashState { get; }
         public float AeroDamage { get; }
@@ -125,10 +110,6 @@ namespace LibPCars2.SharedMemory
 
         public uint SequenceNumber { get; }
 
-        public float[] WheelLocalPosition { get; }
-        public float[] SuspensionTravel { get; }
-        public float[] SuspensionVelocity { get; }
-        public float[] AirPressure { get; }
         public float EngineSpeed { get; }
         public float EngineTorque { get; }
         public float[] Wings { get; }
@@ -145,7 +126,7 @@ namespace LibPCars2.SharedMemory
         public bool[] LapsInvalidated { get; }
         public RaceState[] RaceStates { get; }
         public PitMode[] PitModes { get; }
-        public float[,] Orientations { get; }
+        public Vector3[] Orientations { get; }
         public float[] Speeds { get; }
         public string[] CarNames { get; }
         public string[] CarClassNames { get; }
@@ -155,7 +136,6 @@ namespace LibPCars2.SharedMemory
         public string TranslatedTrackVariation { get; }
         public float BrakeBias { get; }
         public float TurboBoostPressure { get; }
-        public string[] TireCompound { get; }
         public PitSchedule[] PitSchedules { get; }
         public FlagColor[] HighestFlagColors { get; }
         public FlagReason[] HighestFlagReasons { get; }

@@ -40,7 +40,30 @@ namespace LibPCars2.SharedMemory
                 throw new ArgumentException("Incompatible API version", "data");
             }
 
-            this.ParticipantInfo = marshaledData.ParticipantInfo.Select(p => new ParticipantInfo(p)).ToArray();
+            this.Participants = marshaledData.ParticipantInfo.Select(p => new ParticipantInfo(p)).ToArray();
+            this.Tires = Enumerable.Range(0, 4).Select(i => new Tire()
+            {
+                TireFlags = marshaledData.TireFlags[i],
+                Terrain = marshaledData.Terrain[i],
+                TireCompound = Internals.Utility.DecodeUtfString(marshaledData.TireCompound[i].Value),
+                YPosition = marshaledData.TireY[i],
+                RotationsPerSecond = marshaledData.TireRPS[i],
+                Temperature = marshaledData.TireTemp[i],
+                HeightAboveGround = marshaledData.TireHeightAboveGround[i],
+                TireWear = marshaledData.TireWear[i],
+                BrakeDamage = marshaledData.BrakeDamage[i],
+                SuspensionDamage = marshaledData.SuspensionDamage[i],
+                BrakeTemp = marshaledData.BrakeTemp[i],
+                TreadTemp = marshaledData.TireTreadTemp[i] - Internals.Utility.KelvinOffset,
+                LayerTemp = marshaledData.TireLayerTemp[i] - Internals.Utility.KelvinOffset,
+                CarcassTemp = marshaledData.TireCarcassTemp[i] - Internals.Utility.KelvinOffset,
+                RimTemp = marshaledData.TireRimTemp[i] - Internals.Utility.KelvinOffset,
+                InternalAirTemp = marshaledData.TireInternalAirTemp[i] - Internals.Utility.KelvinOffset,
+                LocalPosition = marshaledData.WheelLocalPosition[i],
+                SuspensionTravel = marshaledData.SuspensionTravel[i],
+                SuspensionVelocity = marshaledData.SuspensionVelocity[i],
+                AirPressure = marshaledData.AirPressure[i] / Internals.Utility.PsiFactor,
+            }).ToArray();
         }
 
         private static string DecodeString(Internals.MarshaledString s) => Internals.Utility.DecodeUtfString(s.Value);

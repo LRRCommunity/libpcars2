@@ -36,7 +36,7 @@ namespace LibPCars2.SharedMemory
     /// </summary>
     public enum NameLimits
     {
-        TYRE_COMPOUND_NAME_LENGTH_MAX = 40,
+        TIRE_COMPOUND_NAME_LENGTH_MAX = 40,
     }
 
     /// <summary>

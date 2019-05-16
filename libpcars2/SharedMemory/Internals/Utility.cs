@@ -12,6 +12,8 @@ namespace LibPCars2.SharedMemory.Internals
     internal static class Utility
     {
         public const int SequenceOffset = 0x1C98;
+        public const float KelvinOffset = 273.15f;
+        public const float PsiFactor = 6.895f;
 
         public static string DecodeUtfString(byte[] data)
         {
