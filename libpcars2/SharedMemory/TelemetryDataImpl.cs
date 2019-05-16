@@ -75,6 +75,18 @@ namespace LibPCars2.SharedMemory
                 },
             }).ToArray();
 
+            this.Weather = new WeatherInfo()
+            {
+                AmbientTemperature = marshaledData.AmbientTemperature,
+                TrackTemperature = marshaledData.TrackTemperature,
+                RainDensity = marshaledData.RainDensity,
+                SnowDensity = marshaledData.SnowDensity,
+                WindSpeed = marshaledData.WindSpeed,
+                WindDirectionX = marshaledData.WindDirectionX,
+                WindDirectionY = marshaledData.WindDirectionY,
+                CloudBrightness = marshaledData.CloudBrightness,
+            };
+
             this.Tires = Enumerable.Range(0, 4).Select(i => new Tire()
             {
                 TireFlags = marshaledData.TireFlags[i],

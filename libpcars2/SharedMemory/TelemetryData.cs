@@ -20,10 +20,14 @@ namespace LibPCars2.SharedMemory
         public ParticipantInfo[] Participants { get; }
         public ParticipantInfoEx[] ParticipantsEx { get; }
 
-        public float UnfilteredThrottle { get; }
+        public float Brake { get; }
+        public float Clutch { get; }
+        public float Steering { get; }
+        public float Throttle { get; }
         public float UnfilteredBrake { get; }
-        public float UnfilteredSteering { get; }
         public float UnfilteredClutch { get; }
+        public float UnfilteredSteering { get; }
+        public float UnfilteredThrottle { get; }
 
         public string CarName { get; }
         public string CarClassName { get; }
@@ -31,8 +35,17 @@ namespace LibPCars2.SharedMemory
         public uint LapsInEvent { get; }
         public string TrackLocation { get; }
         public string TrackVariation { get; }
+        public string TranslatedTrackLocation { get; }
+        public string TranslatedTrackVariation { get; }
         public float TrackLength { get; }
         public int NumSectors { get; }
+        public float EventTimeRemaining { get; }
+        public float WorldFastestLapTime { get; }
+        public float WorldFastestSector1Time { get; }
+        public float WorldFastestSector2Time { get; }
+        public float WorldFastestSector3Time { get; }
+
+        public WeatherInfo Weather { get; }
 
         public bool InvalidLap { get; }
         public float BestLapTime { get; }
@@ -41,9 +54,7 @@ namespace LibPCars2.SharedMemory
         public float SplitTimeAhead { get; }
         public float SplitTimeBehind { get; }
         public float SplitTime { get; }
-        public float EventTimeRemaining { get; }
         public float PersonalFastestLapTime { get; }
-        public float WorldFastestLapTime { get; }
         public float CurrentSector1Time { get; }
         public float CurrentSector2Time { get; }
         public float CurrentSector3Time { get; }
@@ -53,9 +64,6 @@ namespace LibPCars2.SharedMemory
         public float PersonalFastestSector1Time { get; }
         public float PersonalFastestSector2Time { get; }
         public float PersonalFastestSector3Time { get; }
-        public float WorldFastestSector1Time { get; }
-        public float WorldFastestSector2Time { get; }
-        public float WorldFastestSector3Time { get; }
 
         public FlagColor HighestFlagColor { get; }
         public FlagReason HighestFlagReason { get; }
@@ -74,10 +82,6 @@ namespace LibPCars2.SharedMemory
         public float Speed { get; }
         public float RPM { get; }
         public float MaxRPM { get; }
-        public float Brake { get; }
-        public float Throttle { get; }
-        public float Clutch { get; }
-        public float Steering { get; }
         public int Gear { get; }
         public int NumGears { get; }
         public float Odometer { get; }
@@ -101,26 +105,13 @@ namespace LibPCars2.SharedMemory
         public float AeroDamage { get; }
         public float EngineDamage { get; }
 
-        public float AmbientTemperature { get; }
-        public float TrackTemperature { get; }
-        public float RainDensity { get; }
-        public float WindSpeed { get; }
-        public float WindDirectionX { get; }
-        public float WindDirectionY { get; }
-        public float CloudBrightness { get; }
-
-        public uint SequenceNumber { get; }
-
         public float EngineSpeed { get; }
         public float EngineTorque { get; }
         public float[] Wings { get; }
         public float HandBrake { get; }
 
         public int EnforcedPitStopLap { get; }
-        public string TranslatedTrackLocation { get; }
-        public string TranslatedTrackVariation { get; }
         public float BrakeBias { get; }
         public float TurboBoostPressure { get; }
-        public float SnowDensity { get; }
     }
 }
