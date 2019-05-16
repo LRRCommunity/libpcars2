@@ -2,63 +2,59 @@
 // Copyright (c) LoadingReadyRun Community. All rights reserved.
 // </copyright>
 
-using System.Runtime.InteropServices;
+using System.Numerics;
 
 namespace LibPCars2.SharedMemory
 {
     /// <summary>
     /// Contains data that is stored for each race participant.
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct ParticipantInfo
+    public partial class ParticipantInfo
     {
         /// <summary>
-        /// Indicates whether the struct contains valid data.
+        /// Gets a value indicating whether the object contains valid data.
         /// </summary>
-        [MarshalAs(UnmanagedType.I1)]
-        public bool IsActive;
+        public bool IsActive { get; }
 
         /// <summary>
-        /// The name of the participant.
+        /// Gets the name of the participant.
         /// </summary>
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)StringLimits.STRING_LENGTH_MAX)]
-        public byte[] Name;
+        public string Name { get; }
 
         /// <summary>
-        /// Vehicle's current position.
+        /// Gets the vehicle's current position.
         /// Represented as XYZ vector in world space.
         /// </summary>
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Vector.VEC_MAX)]
-        public float[] WorldPosition;
+        public Vector3 WorldPosition { get; }
 
         /// <summary>
-        /// Distance driven in current lap.
+        /// Gets the distance driven in current lap.
         /// Measured in meters. Value of 0.0f represents unset variable.
         /// </summary>
-        public float CurrentLapDistance;
+        public float CurrentLapDistance { get; }
 
         /// <summary>
-        /// Participant's current position on the leaderboard.
+        /// Gets the participant's current position on the leaderboard.
         /// Value of 0 represents unset variable.
         /// </summary>
-        public uint RacePosition;
+        public uint RacePosition { get; }
 
         /// <summary>
-        /// Number of laps successfully completed.
+        /// Gets the number of laps successfully completed.
         /// Value of 0 represents unset variable.
         /// </summary>
-        public uint LapsCompleted;
+        public uint LapsCompleted { get; }
 
         /// <summary>
-        /// Current lap in the race.
+        /// Gets the current lap in the race.
         /// Value of 0 represents unset variable.
         /// </summary>
-        public uint CurrentLap;
+        public uint CurrentLap { get; }
 
         /// <summary>
-        /// Current sector of the race.
+        /// Gets the current sector of the race.
         /// Value of -1 represents unset variable.
         /// </summary>
-        public int CurrentSector;
+        public int CurrentSector { get; }
     }
 }

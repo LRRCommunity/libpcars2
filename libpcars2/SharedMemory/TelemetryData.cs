@@ -2,230 +2,164 @@
 // Copyright (c) LoadingReadyRun Community. All rights reserved.
 // </copyright>
 
-using System.Runtime.InteropServices;
-
 namespace LibPCars2.SharedMemory
 {
+#pragma warning disable SA1516
 #pragma warning disable SA1600
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct TelemetryData
+#pragma warning disable SA1601
+    public partial class TelemetryData
     {
-        public const int SequenceOffset = 0x1C98;
+        public GameState GameState { get; }
+        public SessionState SessionState { get; }
+        public RaceState RaceState { get; }
 
-        public uint Version;
-        public uint BuildVersion;
+        public int ViewedParticipantIndex { get; }
+        public int NumParticipants { get; }
+        public ParticipantInfo[] ParticipantInfo { get; }
 
-        public GameState GameState;
-        public SessionState SessionState;
-        public RaceState RaceState;
+        public float UnfilteredThrottle { get; }
+        public float UnfilteredBrake { get; }
+        public float UnfilteredSteering { get; }
+        public float UnfilteredClutch { get; }
 
-        public int ViewedParticipantIndex;
-        public int NumParticipants;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public ParticipantInfo[] ParticipantInfo;
+        public string CarName { get; }
+        public string CarClassName { get; }
 
-        public float UnfilteredThrottle;
-        public float UnfilteredBrake;
-        public float UnfilteredSteering;
-        public float UnfilteredClutch;
+        public uint LapsInEvent { get; }
+        public string TrackLocation { get; }
+        public string TrackVariation { get; }
+        public float TrackLength { get; }
 
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)StringLimits.STRING_LENGTH_MAX)]
-        public byte[] CarName;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)StringLimits.STRING_LENGTH_MAX)]
-        public byte[] CarClassName;
+        public int NumSectors { get; }
+        public bool LapInvalidated { get; }
+        public float BestLapTime { get; }
+        public float LastLapTime { get; }
+        public float CurrentTime { get; }
+        public float SplitTimeAhead { get; }
+        public float SplitTimeBehind { get; }
+        public float SplitTime { get; }
+        public float EventTimeRemaining { get; }
+        public float PersonalFastestLapTime { get; }
+        public float WorldFastestLapTime { get; }
+        public float CurrentSector1Time { get; }
+        public float CurrentSector2Time { get; }
+        public float CurrentSector3Time { get; }
+        public float FastestSector1Time { get; }
+        public float FastestSector2Time { get; }
+        public float FastestSector3Time { get; }
+        public float PersonalFastestSector1Time { get; }
+        public float PersonalFastestSector2Time { get; }
+        public float PersonalFastestSector3Time { get; }
+        public float WorldFastestSector1Time { get; }
+        public float WorldFastestSector2Time { get; }
+        public float WorldFastestSector3Time { get; }
 
-        public uint LapsInEvent;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)StringLimits.STRING_LENGTH_MAX)]
-        public byte[] TrackLocation;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)StringLimits.STRING_LENGTH_MAX)]
-        public byte[] TrackVariation;
-        public float TrackLength;
+        public FlagColor HighestFlagColor { get; }
+        public FlagReason HighestFlagReason { get; }
 
-        public int NumSectors;
-        [MarshalAs(UnmanagedType.I1)]
-        public bool LapInvalidated;
-        public float BestLapTime;
-        public float LastLapTime;
-        public float CurrentTime;
-        public float SplitTimeAhead;
-        public float SplitTimeBehind;
-        public float SplitTime;
-        public float EventTimeRemaining;
-        public float PersonalFastestLapTime;
-        public float WorldFastestLapTime;
-        public float CurrentSector1Time;
-        public float CurrentSector2Time;
-        public float CurrentSector3Time;
-        public float FastestSector1Time;
-        public float FastestSector2Time;
-        public float FastestSector3Time;
-        public float PersonalFastestSector1Time;
-        public float PersonalFastestSector2Time;
-        public float PersonalFastestSector3Time;
-        public float WorldFastestSector1Time;
-        public float WorldFastestSector2Time;
-        public float WorldFastestSector3Time;
+        public PitMode PitMode { get; }
+        public PitSchedule PitSchedule { get; }
 
-        public FlagColor HighestFlagColor;
-        public FlagReason HighestFlagReason;
+        public CarFlags CarFlags { get; }
+        public float OilTemp { get; }
+        public float OilPressure { get; }
+        public float WaterTemp { get; }
+        public float WaterPressure { get; }
+        public float FuelPressure { get; }
+        public float FuelLevel { get; }
+        public float FuelCapacity { get; }
+        public float Speed { get; }
+        public float RPM { get; }
+        public float MaxRPM { get; }
+        public float Brake { get; }
+        public float Throttle { get; }
+        public float Clutch { get; }
+        public float Steering { get; }
+        public int Gear { get; }
+        public int NumGears { get; }
+        public float Odometer { get; }
+        public bool AntiLockActive { get; }
+        public int LastOpponentCollisionIndex { get; }
+        public float LastOpponentCollisionMagnitude { get; }
+        public bool BoostActive { get; }
+        public float BoostAmount { get; }
 
-        public PitMode PitMode;
-        public PitSchedule PitSchedule;
+        public float[] Orientation { get; }
+        public float[] LocalVelocity { get; }
+        public float[] WorldVelocity { get; }
+        public float[] AngularVelocity { get; }
+        public float[] LocalAcceleration { get; }
+        public float[] WorldAcceleration { get; }
+        public float[] ExtentsCentre { get; }
 
-        public CarFlags CarFlags;
-        public float OilTemp;
-        public float OilPressure;
-        public float WaterTemp;
-        public float WaterPressure;
-        public float FuelPressure;
-        public float FuelLevel;
-        public float FuelCapacity;
-        public float Speed;
-        public float RPM;
-        public float MaxRPM;
-        public float Brake;
-        public float Throttle;
-        public float Clutch;
-        public float Steering;
-        public int Gear;
-        public int NumGears;
-        public float Odometer;
-        [MarshalAs(UnmanagedType.I1)]
-        public bool AntiLockActive;
-        public int LastOpponentCollisionIndex;
-        public float LastOpponentCollisionMagnitude;
-        [MarshalAs(UnmanagedType.I1)]
-        public bool BoostActive;
-        public float BoostAmount;
+        public TireFlags[] TireFlags { get; }
+        public TerrainType[] Terrain { get; }
+        public float[] TireY { get; }
+        public float[] TireRPS { get; }
+        public float[] TireSlipSpeed { get; }
+        public float[] TireTemp { get; }
+        public float[] TireGrip { get; }
+        public float[] TireHeightAboveGround { get; }
+        public float[] TireLateralStiffness { get; }
+        public float[] TireWear { get; }
+        public float[] BrakeDamage { get; }
+        public float[] SuspensionDamage { get; }
+        public float[] BrakeTemp { get; }
+        public float[] TireTreadTemp { get; }
+        public float[] TireLayerTemp { get; }
+        public float[] TireCarcassTemp { get; }
+        public float[] TireRimTemp { get; }
+        public float[] TireInternalAirTemp { get; }
 
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Vector.VEC_MAX)]
-        public float[] Orientation;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Vector.VEC_MAX)]
-        public float[] LocalVelocity;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Vector.VEC_MAX)]
-        public float[] WorldVelocity;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Vector.VEC_MAX)]
-        public float[] AngularVelocity;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Vector.VEC_MAX)]
-        public float[] LocalAcceleration;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Vector.VEC_MAX)]
-        public float[] WorldAcceleration;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Vector.VEC_MAX)]
-        public float[] ExtentsCentre;
+        public CrashState CrashState { get; }
+        public float AeroDamage { get; }
+        public float EngineDamage { get; }
 
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public TireFlags[] TireFlags;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public TerrainType[] Terrain;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireY;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireRPS;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireSlipSpeed;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireTemp;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireGrip;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireHeightAboveGround;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireLateralStiffness;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireWear;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] BrakeDamage;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] SuspensionDamage;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] BrakeTemp;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireTreadTemp;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireLayerTemp;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireCarcassTemp;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireRimTemp;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] TireInternalAirTemp;
+        public float AmbientTemperature { get; }
+        public float TrackTemperature { get; }
+        public float RainDensity { get; }
+        public float WindSpeed { get; }
+        public float WindDirectionX { get; }
+        public float WindDirectionY { get; }
+        public float CloudBrightness { get; }
 
-        public CrashState CrashState;
-        public float AeroDamage;
-        public float EngineDamage;
+        public uint SequenceNumber { get; }
 
-        public float AmbientTemperature;
-        public float TrackTemperature;
-        public float RainDensity;
-        public float WindSpeed;
-        public float WindDirectionX;
-        public float WindDirectionY;
-        public float CloudBrightness;
+        public float[] WheelLocalPosition { get; }
+        public float[] SuspensionTravel { get; }
+        public float[] SuspensionVelocity { get; }
+        public float[] AirPressure { get; }
+        public float EngineSpeed { get; }
+        public float EngineTorque { get; }
+        public float[] Wings { get; }
+        public float HandBrake { get; }
 
-        public uint SequenceNumber;
+        public float[] CurrentSector1Times { get; }
+        public float[] CurrentSector2Times { get; }
+        public float[] CurrentSector3Times { get; }
+        public float[] FastestSector1Times { get; }
+        public float[] FastestSector2Times { get; }
+        public float[] FastestSector3Times { get; }
+        public float[] FastestLapTimes { get; }
+        public float[] LastLapTimes { get; }
+        public bool[] LapsInvalidated { get; }
+        public RaceState[] RaceStates { get; }
+        public PitMode[] PitModes { get; }
+        public float[,] Orientations { get; }
+        public float[] Speeds { get; }
+        public string[] CarNames { get; }
+        public string[] CarClassNames { get; }
 
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] WheelLocalPosition;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] SuspensionTravel;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] SuspensionVelocity;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)Tires.TIRE_MAX)]
-        public float[] AirPressure;
-        public float EngineSpeed;
-        public float EngineTorque;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public float[] Wings;
-        public float HandBrake;
-
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public float[] CurrentSector1Times;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public float[] CurrentSector2Times;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public float[] CurrentSector3Times;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public float[] FastestSector1Times;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public float[] FastestSector2Times;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public float[] FastestSector3Times;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public float[] FastestLapTimes;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public float[] LastLapTimes;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX, ArraySubType = UnmanagedType.I1)]
-        public bool[] LapsInvalidated;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public RaceState[] RaceStates;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public PitMode[] PitModes;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX * 3)]
-        public float[,] Orientations;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public float[] Speeds;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX * 64)]
-        public byte[,] CarNames;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX * 64)]
-        public byte[,] CarClassNames;
-
-        public int EnforcedPitStopLap;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)StringLimits.STRING_LENGTH_MAX)]
-        public byte[] TranslatedTrackLocation;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)StringLimits.STRING_LENGTH_MAX)]
-        public byte[] TranslatedTrackVariation;
-        public float BrakeBias;
-        public float TurboBoostPressure;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)NameLimits.TYRE_COMPOUND_NAME_LENGTH_MAX * 4)]
-        public byte[,] TireCompound;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public PitSchedule[] PitSchedules;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public FlagColor[] HighestFlagColors;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public FlagReason[] HighestFlagReasons;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)ParticipantLimits.STORED_PARTICIPANTS_MAX)]
-        public uint[] Nationalities;
-        public float SnowDensity;
+        public int EnforcedPitStopLap { get; }
+        public string TranslatedTrackLocation { get; }
+        public string TranslatedTrackVariation { get; }
+        public float BrakeBias { get; }
+        public float TurboBoostPressure { get; }
+        public string[] TireCompound { get; }
+        public PitSchedule[] PitSchedules { get; }
+        public FlagColor[] HighestFlagColors { get; }
+        public FlagReason[] HighestFlagReasons { get; }
+        public uint[] Nationalities { get; }
+        public float SnowDensity { get; }
     }
 }
