@@ -18,6 +18,7 @@ namespace LibPCars2.SharedMemory
         public int ViewedParticipantIndex { get; }
         public int NumParticipants { get; }
         public ParticipantInfo[] Participants { get; }
+        public ParticipantInfoEx[] ParticipantsEx { get; }
 
         public float UnfilteredThrottle { get; }
         public float UnfilteredBrake { get; }
@@ -31,9 +32,9 @@ namespace LibPCars2.SharedMemory
         public string TrackLocation { get; }
         public string TrackVariation { get; }
         public float TrackLength { get; }
-
         public int NumSectors { get; }
-        public bool LapInvalidated { get; }
+
+        public bool InvalidLap { get; }
         public float BestLapTime { get; }
         public float LastLapTime { get; }
         public float CurrentTime { get; }
@@ -115,31 +116,11 @@ namespace LibPCars2.SharedMemory
         public float[] Wings { get; }
         public float HandBrake { get; }
 
-        public float[] CurrentSector1Times { get; }
-        public float[] CurrentSector2Times { get; }
-        public float[] CurrentSector3Times { get; }
-        public float[] FastestSector1Times { get; }
-        public float[] FastestSector2Times { get; }
-        public float[] FastestSector3Times { get; }
-        public float[] FastestLapTimes { get; }
-        public float[] LastLapTimes { get; }
-        public bool[] LapsInvalidated { get; }
-        public RaceState[] RaceStates { get; }
-        public PitMode[] PitModes { get; }
-        public Vector3[] Orientations { get; }
-        public float[] Speeds { get; }
-        public string[] CarNames { get; }
-        public string[] CarClassNames { get; }
-
         public int EnforcedPitStopLap { get; }
         public string TranslatedTrackLocation { get; }
         public string TranslatedTrackVariation { get; }
         public float BrakeBias { get; }
         public float TurboBoostPressure { get; }
-        public PitSchedule[] PitSchedules { get; }
-        public FlagColor[] HighestFlagColors { get; }
-        public FlagReason[] HighestFlagReasons { get; }
-        public uint[] Nationalities { get; }
         public float SnowDensity { get; }
     }
 }

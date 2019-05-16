@@ -40,7 +40,41 @@ namespace LibPCars2.SharedMemory
                 throw new ArgumentException("Incompatible API version", "data");
             }
 
+            this.GameState = marshaledData.GameState;
+            this.SessionState = marshaledData.SessionState;
+            this.RaceState = marshaledData.RaceState;
+
+            this.ViewedParticipantIndex = marshaledData.ViewedParticipantIndex;
+            this.NumParticipants = marshaledData.NumParticipants;
             this.Participants = marshaledData.ParticipantInfo.Select(p => new ParticipantInfo(p)).ToArray();
+            this.ParticipantsEx = Enumerable.Range(0, 64).Select(i => new ParticipantInfoEx()
+            {
+                CurrentSector1Time = marshaledData.CurrentSector1Times[i],
+                CurrentSector2Time = marshaledData.CurrentSector2Times[i],
+                CurrentSector3Time = marshaledData.CurrentSector3Times[i],
+                FastestSector1Time = marshaledData.FastestSector1Times[i],
+                FastestSector2Time = marshaledData.FastestSector2Times[i],
+                FastestSector3Time = marshaledData.FastestSector3Times[i],
+                FastestLapTime = marshaledData.FastestLapTimes[i],
+                LastLapTime = marshaledData.LastLapTimes[i],
+                InvalidLap = marshaledData.LapsInvalidated[i],
+                RaceState = marshaledData.RaceStates[i],
+                Speed = marshaledData.Speeds[i],
+                PitMode = marshaledData.PitModes[i],
+                PitSchedule = marshaledData.PitSchedules[i],
+                HighestFlagColor = marshaledData.HighestFlagColors[i],
+                HighestFlagReason = marshaledData.HighestFlagReasons[i],
+                CarName = DecodeString(marshaledData.CarNames[i]),
+                CarClassName = DecodeString(marshaledData.CarClassNames[i]),
+                CountryCode = marshaledData.Nationalities[i],
+                Orientation = new Vector3()
+                {
+                    X = marshaledData.Orientations[(i * 3) + 0],
+                    Y = marshaledData.Orientations[(i * 3) + 1],
+                    Z = marshaledData.Orientations[(i * 3) + 2],
+                },
+            }).ToArray();
+
             this.Tires = Enumerable.Range(0, 4).Select(i => new Tire()
             {
                 TireFlags = marshaledData.TireFlags[i],
