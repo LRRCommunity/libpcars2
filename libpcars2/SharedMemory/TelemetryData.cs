@@ -15,6 +15,8 @@ namespace LibPCars2.SharedMemory
         public SessionState SessionState { get; }
         public RaceState RaceState { get; }
 
+        public uint SequenceNumber { get; }
+
         public int ViewedParticipantIndex { get; }
         public int NumParticipants { get; }
         public ParticipantInfo[] Participants { get; }
@@ -32,35 +34,23 @@ namespace LibPCars2.SharedMemory
         public string CarName { get; }
         public string CarClassName { get; }
 
-        public uint LapsInEvent { get; }
-        public string TrackLocation { get; }
-        public string TrackVariation { get; }
-        public string TranslatedTrackLocation { get; }
-        public string TranslatedTrackVariation { get; }
-        public float TrackLength { get; }
-        public int NumSectors { get; }
-        public float EventTimeRemaining { get; }
-        public float WorldFastestLapTime { get; }
-        public float WorldFastestSector1Time { get; }
-        public float WorldFastestSector2Time { get; }
-        public float WorldFastestSector3Time { get; }
-
+        public EventInfo EventDetails { get; }
         public WeatherInfo Weather { get; }
 
         public bool InvalidLap { get; }
         public float BestLapTime { get; }
         public float LastLapTime { get; }
         public float CurrentTime { get; }
+        public float SplitTime { get; }
         public float SplitTimeAhead { get; }
         public float SplitTimeBehind { get; }
-        public float SplitTime { get; }
-        public float PersonalFastestLapTime { get; }
         public float CurrentSector1Time { get; }
         public float CurrentSector2Time { get; }
         public float CurrentSector3Time { get; }
         public float FastestSector1Time { get; }
         public float FastestSector2Time { get; }
         public float FastestSector3Time { get; }
+        public float PersonalFastestLapTime { get; }
         public float PersonalFastestSector1Time { get; }
         public float PersonalFastestSector2Time { get; }
         public float PersonalFastestSector3Time { get; }
@@ -97,7 +87,7 @@ namespace LibPCars2.SharedMemory
         public Vector3 AngularVelocity { get; }
         public Vector3 LocalAcceleration { get; }
         public Vector3 WorldAcceleration { get; }
-        public Vector3 ExtentsCentre { get; }
+        public Vector3 ExtentsCenter { get; }
 
         public Tire[] Tires { get; }
 

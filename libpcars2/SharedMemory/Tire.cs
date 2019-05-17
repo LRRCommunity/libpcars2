@@ -2,6 +2,8 @@
 // Copyright (c) LoadingReadyRun Community. All rights reserved.
 // </copyright>
 
+using System;
+
 namespace LibPCars2.SharedMemory
 {
     /// <summary>
@@ -35,5 +37,12 @@ namespace LibPCars2.SharedMemory
         public float SuspensionTravel { get; internal set; }
         public float SuspensionVelocity { get; internal set; }
         public float AirPressure { get; internal set; }
+
+        [Obsolete]
+        public float SlipSpeed { get; internal set; }
+        [Obsolete]
+        public float Grip { get; internal set; }
+        [Obsolete]
+        public float LateralStiffness { get; internal set; }
     }
 }

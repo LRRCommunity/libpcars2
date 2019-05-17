@@ -75,6 +75,33 @@ namespace LibPCars2.SharedMemory
                 },
             }).ToArray();
 
+            this.Brake = marshaledData.Brake;
+            this.Clutch = marshaledData.Clutch;
+            this.Steering = marshaledData.Steering;
+            this.Throttle = marshaledData.Throttle;
+            this.UnfilteredBrake = marshaledData.UnfilteredBrake;
+            this.UnfilteredClutch = marshaledData.UnfilteredClutch;
+            this.UnfilteredSteering = marshaledData.UnfilteredSteering;
+            this.UnfilteredThrottle = marshaledData.UnfilteredThrottle;
+
+            this.CarName = DecodeString(marshaledData.CarName);
+            this.CarClassName = DecodeString(marshaledData.CarClassName);
+
+            this.EventDetails = new EventInfo()
+            {
+                LapsInEvent = marshaledData.LapsInEvent,
+                EventTimeRemaining = marshaledData.EventTimeRemaining,
+                TrackLength = marshaledData.TrackLength,
+                NumSectors = marshaledData.NumSectors,
+                TrackLocation = DecodeString(marshaledData.TrackLocation),
+                TrackVariant = DecodeString(marshaledData.TrackVariation),
+                TranslatedTrackLocation = DecodeString(marshaledData.TranslatedTrackLocation),
+                TranslatedTrackVariant = DecodeString(marshaledData.TranslatedTrackVariation),
+                WorldFastestLapTime = marshaledData.WorldFastestLapTime,
+                WorldFastestSector1Time = marshaledData.WorldFastestSector1Time,
+                WorldFastestSector2Time = marshaledData.WorldFastestSector2Time,
+                WorldFastestSector3Time = marshaledData.WorldFastestSector3Time,
+            };
             this.Weather = new WeatherInfo()
             {
                 AmbientTemperature = marshaledData.AmbientTemperature,
@@ -86,6 +113,58 @@ namespace LibPCars2.SharedMemory
                 WindDirectionY = marshaledData.WindDirectionY,
                 CloudBrightness = marshaledData.CloudBrightness,
             };
+
+            this.InvalidLap = marshaledData.LapInvalidated;
+            this.BestLapTime = marshaledData.BestLapTime;
+            this.LastLapTime = marshaledData.LastLapTime;
+            this.CurrentTime = marshaledData.CurrentTime;
+            this.SplitTime = marshaledData.SplitTime;
+            this.SplitTimeAhead = marshaledData.SplitTimeAhead;
+            this.SplitTimeBehind = marshaledData.SplitTimeBehind;
+            this.CurrentSector1Time = marshaledData.CurrentSector1Time;
+            this.CurrentSector2Time = marshaledData.CurrentSector2Time;
+            this.CurrentSector3Time = marshaledData.CurrentSector3Time;
+            this.FastestSector1Time = marshaledData.FastestSector1Time;
+            this.FastestSector2Time = marshaledData.FastestSector2Time;
+            this.FastestSector3Time = marshaledData.FastestSector3Time;
+            this.PersonalFastestLapTime = marshaledData.PersonalFastestLapTime;
+            this.PersonalFastestSector1Time = marshaledData.PersonalFastestSector1Time;
+            this.PersonalFastestSector2Time = marshaledData.PersonalFastestSector2Time;
+            this.PersonalFastestSector3Time = marshaledData.PersonalFastestSector3Time;
+
+            this.HighestFlagColor = marshaledData.HighestFlagColor;
+            this.HighestFlagReason = marshaledData.HighestFlagReason;
+
+            this.PitMode = marshaledData.PitMode;
+            this.PitSchedule = marshaledData.PitSchedule;
+
+            this.CarFlags = marshaledData.CarFlags;
+            this.OilTemp = marshaledData.OilTemp;
+            this.OilPressure = marshaledData.OilPressure;
+            this.WaterTemp = marshaledData.WaterTemp;
+            this.WaterPressure = marshaledData.WaterPressure;
+            this.FuelPressure = marshaledData.FuelPressure;
+            this.FuelLevel = marshaledData.FuelLevel;
+            this.FuelCapacity = marshaledData.FuelCapacity;
+            this.Speed = marshaledData.Speed;
+            this.RPM = marshaledData.RPM;
+            this.MaxRPM = marshaledData.MaxRPM;
+            this.Gear = marshaledData.Gear;
+            this.NumGears = marshaledData.NumGears;
+            this.Odometer = marshaledData.Odometer;
+            this.AntiLockActive = marshaledData.AntiLockActive;
+            this.LastOpponentCollisionIndex = marshaledData.LastOpponentCollisionIndex;
+            this.LastOpponentCollisionMagnitude = marshaledData.LastOpponentCollisionMagnitude;
+            this.BoostActive = marshaledData.BoostActive;
+            this.BoostAmount = marshaledData.BoostAmount;
+
+            this.Orientation = MakeVector(marshaledData.Orientation);
+            this.LocalVelocity = MakeVector(marshaledData.LocalVelocity);
+            this.WorldVelocity = MakeVector(marshaledData.WorldVelocity);
+            this.AngularVelocity = MakeVector(marshaledData.AngularVelocity);
+            this.LocalAcceleration = MakeVector(marshaledData.LocalAcceleration);
+            this.WorldAcceleration = MakeVector(marshaledData.WorldAcceleration);
+            this.ExtentsCenter = MakeVector(marshaledData.ExtentsCentre);
 
             this.Tires = Enumerable.Range(0, 4).Select(i => new Tire()
             {
@@ -108,8 +187,29 @@ namespace LibPCars2.SharedMemory
                 LocalPosition = marshaledData.WheelLocalPosition[i],
                 SuspensionTravel = marshaledData.SuspensionTravel[i],
                 SuspensionVelocity = marshaledData.SuspensionVelocity[i],
-                AirPressure = marshaledData.AirPressure[i] / Internals.Utility.PsiFactor,
+                AirPressure = marshaledData.AirPressure[i],
+#pragma warning disable CS0612
+                SlipSpeed = marshaledData.TireSlipSpeed[i],
+                Grip = marshaledData.TireGrip[i],
+                LateralStiffness = marshaledData.TireLateralStiffness[i],
+#pragma warning restore CS0612
+
             }).ToArray();
+
+            this.CrashState = marshaledData.CrashState;
+            this.AeroDamage = marshaledData.AeroDamage;
+            this.EngineDamage = marshaledData.EngineDamage;
+
+            this.EngineSpeed = marshaledData.EngineSpeed;
+            this.EngineTorque = marshaledData.EngineTorque;
+            this.Wings = marshaledData.Wings;
+            this.HandBrake = marshaledData.HandBrake;
+
+            this.EnforcedPitStopLap = marshaledData.EnforcedPitStopLap;
+            this.BrakeBias = marshaledData.BrakeBias;
+            this.TurboBoostPressure = marshaledData.TurboBoostPressure;
+
+            this.SequenceNumber = marshaledData.SequenceNumber;
         }
 
         private static string DecodeString(Internals.MarshaledString s) => Internals.Utility.DecodeUtfString(s.Value);
