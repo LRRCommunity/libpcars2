@@ -16,7 +16,7 @@ namespace LibPCars2.SharedMemory
         /// Initializes a new instance of the <see cref="TelemetryData"/> class.
         /// Constructs a TelemetryData object from a binary array.
         /// </summary>
-        /// <param name="data">Packed binary data retreived from the game.</param>
+        /// <param name="data">Packed binary data retrieved from the game.</param>
         public TelemetryData(byte[] data)
         {
             if (data.Length < Marshal.SizeOf<Internals.MarshaledTelemetry>())
